@@ -14,14 +14,20 @@ class HomePageTemp extends StatelessWidget {
   }
 
   List<Widget> _createItems() {
-    List<Widget> itemList = new List<Widget>();
-
-    for (var option in options) {
-      final item = ListTile(title: Text(option));
-      itemList..add(item)
-              ..add(Divider());
-    }
-
-    return itemList;
+    return options.map((item) {
+      return Column(
+        children: <Widget>[
+          ListTile(
+            title: Text(item),
+            subtitle: Text('Subtitle'),
+            leading: Icon(Icons.supervised_user_circle),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () => print('Doing tap'),
+            onLongPress: () => print('Doing long press'),
+          ),
+          Divider()
+        ],
+      );
+    }).toList();
   }
 }
