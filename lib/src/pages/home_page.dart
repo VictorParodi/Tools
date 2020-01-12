@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './../providers/menu_provider.dart';
+import './../utils/icons_utils.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -25,10 +26,13 @@ class HomePage extends StatelessWidget {
   List<Widget> _createItems(List<dynamic> data) {
     return data.map((item) {
       return ListTile(
-        leading: Icon(Icons.supervised_user_circle, color: Colors.black),
+        leading: getIcon(item['icon']),
         trailing: Icon(Icons.chevron_right, color: Colors.black),
         title: Text(item['texto']),
-        subtitle: Text('Subtitle'),);
+        subtitle: Text('Subtitle'),
+        onLongPress: () {},
+        onTap: () {},
+        );
     }).toList(); 
   }
 }
