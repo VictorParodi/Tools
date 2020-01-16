@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import './../providers/menu_provider.dart';
 import './../utils/icons_utils.dart';
-import './alert_page.dart';
-import './avatar_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -34,8 +32,6 @@ class HomePage extends StatelessWidget {
         subtitle: Text('Subtitle'),
         onLongPress: () {},
         onTap: () {
-          // final route = MaterialPageRoute(builder: (context) => AlertPage());
-          // Navigator.push(context, route);
           Navigator.pushNamed(context, item['ruta']);
         },
         );

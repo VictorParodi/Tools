@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import './src/routes/routes.dart';
 import './src/pages/alert_page.dart';
-// import './src/pages/home_temp.dart';
  
 void main() => runApp(MyApp());
  
