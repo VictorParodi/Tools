@@ -9,14 +9,15 @@ class CardsPage extends StatelessWidget {
         body: ListView(
           padding: EdgeInsets.all(10.0),
           children: <Widget> [
-            _cardsOne()
+            _cardsOne(),
+            _cardTwo()
           ],
         ),
       ),
     );
   }
 
-  _cardsOne() {
+  Widget _cardsOne() {
     return (
       Card(
         child: Column(
@@ -38,6 +39,28 @@ class CardsPage extends StatelessWidget {
                   child: Text('CANCEL'),
                 )
               ],
+            )
+          ],
+        ),
+      )
+    );
+  }
+
+  Widget _cardTwo() {
+    return (
+      Card(
+        child: Column(
+          children: <Widget>[
+            FadeInImage(
+              placeholder: AssetImage('assets/jar-loading.gif'),
+              image: NetworkImage('https://www.itl.cat/pngfile/big/29-299814_gigi-hadid.jpg'),
+              fit: BoxFit.cover,
+              fadeInDuration: Duration(milliseconds: 100),
+              height: 400.0,
+            ),
+            Container(
+              child: Text('This is an image card'),
+              padding: EdgeInsets.all(10.0),
             )
           ],
         ),
