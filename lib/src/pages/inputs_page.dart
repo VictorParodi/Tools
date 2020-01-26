@@ -7,6 +7,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int _counter = 0;
+  List<dynamic> powers = ['Fly', 'X Ray', 'Strong'];
+  String dropvalue = 'Fly';
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,9 @@ class _InputPageState extends State<InputPage> {
       ListView(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         children: <Widget>[
-          _createInputItem()
+          _createInputItem(),
+          SizedBox(height: 20.0,),
+          _createDropdown()
         ],
       )
     );
@@ -44,5 +48,28 @@ class _InputPageState extends State<InputPage> {
         ),
       )
     );
+  }
+
+  Widget _createDropdown() {
+    return (
+      DropdownButton(
+        value: dropvalue,
+        items: _createDropOptions(),
+        onChanged: (option) {
+          setState(() => dropvalue = option);
+        },
+      )
+    );
+  }
+
+  List<DropdownMenuItem<dynamic>> _createDropOptions() {
+    return powers.map((power) {
+      return (
+        DropdownMenuItem(
+          value: power,
+          child: Text(power),
+        )
+      );
+    }).toList();
   }
 }
