@@ -6,7 +6,20 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  List<dynamic> _numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // List<dynamic> _numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  ScrollController _scrollcontrol = new ScrollController();
+  List<dynamic> _numbers = [];
+  int _lastItem = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _addTen();
+
+    _scrollcontrol.addListener(() {
+      if (_scrollcontrol.position.pixels == _scrollcontrol.position.maxScrollExtent) {_addTen();}
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +32,7 @@ class _ListPageState extends State<ListPage> {
   Widget _createList() {
     return (
       ListView.builder(
+        controller: _scrollcontrol,
         itemCount: _numbers.length,
         itemBuilder: (context, index) {
           return (
@@ -32,5 +46,14 @@ class _ListPageState extends State<ListPage> {
         },
       )
     );
+  }
+
+  void _addTen() {
+    for (var i = 1; i < 10; i++) {
+      _lastItem++;
+      _numbers.add(_lastItem);
+    }
+
+    setState(() {});
   }
 }
